@@ -10,13 +10,13 @@ angular.module('myApp', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
-    when('/view1', {
-      templateUrl: 'partials/partial1',
-      controller: 'MyCtrl1'
+    when('/sc100', {
+      templateUrl: 'partials/sc100',
+      controller: 'FormCtrl'
     }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
+    when('/sc100full', {
+      templateUrl: 'partials/sc100full',
+      controller: 'ScCtrl'
     }).
     otherwise({
       redirectTo: '/view1'

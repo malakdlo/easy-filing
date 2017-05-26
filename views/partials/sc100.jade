@@ -1,0 +1,76 @@
+block body
+div
+    .row
+      .col-md-8
+        h1="Create a PDF"
+        form.form-horizontal.well(method="post", action="/fillpdf")
+            .form-group
+                label.col-md-2.control-label Name
+                .col-md-10
+                  .input-group
+                    input.form-control(type="text", name="p1First", placeholder="First Name")
+                    input.form-control(type="text", name="p1Last", placeholder="Last Name")
+                    input.form-control(type="text", name="p1Phone", placeholder="Phone")
+            .form-group
+                .col-sm-offset-2.col-sm-10
+                  input.btn.btn-default(type="submit", value="Create PDF")
+//-
+    div(ng-controller='FormCtrl', layout='column', ng-cloak='', class='md-inline-form inputdemoBasicUsage', ng-app='MyApp')
+      md-content(md-theme='docs-dark', layout-gt-sm='row', layout-padding='')
+        div
+          md-input-container
+            label Title
+            input(ng-model='user.title')
+          md-input-container
+            label Email
+            input(ng-model='user.email', type='email')
+      md-content(layout-padding='')
+        div
+          form(name='userForm',method="post", action="/fillpdf")
+            div(layout-gt-xs='row')
+              md-input-container.md-block(flex-gt-xs='')
+                label Company (Disabled)
+                input(ng-model='user.company', disabled='')
+              md-input-container
+                label Enter date
+                md-datepicker(ng-model='user.submissionDate')
+            div(layout-gt-sm='row')
+              md-input-container.md-block(flex-gt-sm='')
+                label First name
+                input(type="text", name="p1First")
+              md-input-container.md-block(flex-gt-sm='')
+                label Last Name
+                input(type="text", name="p1Last")
+              md-input-container.md-block(flex-gt-sm='')
+                label Phone
+                input(type="text", name="p1Phone")
+            md-input-container.md-block
+              label Address
+              input(ng-model='user.address')
+            md-input-container.md-block(md-no-float='')
+              input(ng-model='user.address2', placeholder='Address 2')
+            div(layout-gt-sm='row')
+              md-input-container.md-block(flex-gt-sm='')
+                label City
+                input(ng-model='user.city')
+              md-input-container.md-block(flex-gt-sm='')
+                label State
+                md-select(ng-model='user.state')
+                  md-option(ng-repeat='state in states', value='{{state.abbrev}}') {{state.abbrev}}
+              md-input-container.md-block(flex-gt-sm='')
+                label Postal Code
+                input(name='postalCode', ng-model='user.postalCode', placeholder='12345', required='', ng-pattern='/^[0-9]{5}$/', md-maxlength='5')
+                div(ng-messages='userForm.postalCode.$error', role='alert', multiple='')
+                  .my-message(ng-message='required') You must supply a postal code.
+                  .my-message(ng-message='pattern')
+                    | That doesn't look like a valid postal
+                    | code.
+                  .my-message(ng-message='md-maxlength') Don't use the long version silly...we don't need to be that specific...
+            md-input-container.md-block
+              label Biography
+              textarea(ng-model='user.biography', md-maxlength='150', rows='5', md-select-on-focus='')
+            div
+              md-button(type='submit' placeholder='Submit')
+//-
+  Copyright 2016 Google Inc. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.

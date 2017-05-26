@@ -6,12 +6,13 @@
 var express = require('express'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  errorHandler = require('error-handler'),
   morgan = require('morgan'),
-  routes = require('./routes'),
-  api = require('./routes/api'),
   http = require('http'),
   path = require('path');
+
+var routes = require('./routes'),
+    api = require('./routes/api'),
+    fillpdf = require('./routes/fillpdf');
 
 var app = module.exports = express();
 
@@ -25,15 +26,23 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(morgan('dev'));
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/**
+* Use fillpdf when posted
+*/
+app.use('/fillpdf', fillpdf);
 
 var env = process.env.NODE_ENV || 'development';
 
 // development only
 if (env === 'development') {
-  app.use(express.errorHandler());
+  // TODO
 }
 
 // production only
