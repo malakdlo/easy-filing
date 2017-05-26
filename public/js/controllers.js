@@ -4,20 +4,15 @@
 
 angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($scope, $http) {
-
-    $http({
-      method: 'GET',
-      url: '/api/name'
-    }).
-    success(function (data, status, headers, config) {
+    $http.get('/api/name').then(successCallback, errorCallback)
+    function successCallback (data, status, headers, config) {
       $scope.name = data.name;
-    }).
-    error(function (data, status, headers, config) {
+    }
+    function errorCallback (data, status, headers, config) {
       $scope.name = 'Error!';
-    });
-
+    }
   }).
-  controller('ScCtrl', ['$scope', function($scope){
+  controller('ScCtrl', function($scope){
     
     
       var quizObject = [];
@@ -186,7 +181,7 @@ angular.module('myApp.controllers', []).
       };
 
     
-  }]);
+  });
 
 /**
 Copyright 2016 Google Inc. All Rights Reserved. 
