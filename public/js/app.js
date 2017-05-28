@@ -6,25 +6,42 @@ angular.module('myApp', [
   'ui.bootstrap',
   'ngRoute',
   'ngAnimate', 
-  'ngSanitize', 
+  'ngSanitize',
+  'ngMaterial',
+  'ngMessages', 
+  'material.svgAssetsCache',
   'myApp.controllers',
   'myApp.filters',
   'myApp.services',
   'myApp.directives'
 ]).
-config(function ($routeProvider, $locationProvider) {
+config(['$routeProvider','$locationProvider', '$mdThemingProvider',function ($routeProvider, $locationProvider, $mdThemingProvider) {
   $routeProvider.
     when('/sc100', {
       templateUrl: 'partials/sc100',
-      controller: 'FormCtrl'
     }).
     when('/sc100full', {
       templateUrl: 'partials/sc100full',
       controller: 'ScCtrl'
     }).
+    when('/scbasic', {
+      templateUrl: 'partials/scbasic',
+      controller: 'ScBasicCtrl'
+    }).
+    when('/file', {
+        templateUrl: 'partials/filesc',
+        controller: 'FileScCtrl'
+    }).
     otherwise({
-      redirectTo: '/view1'
+      redirectTo: '/sc100full'
     });
-
+  
+  /******************************************************
+                      Angular Material Theme
+  *********************************************************/
+  $mdThemingProvider.theme('docs-dark', 'default')
+    .primaryPalette('yellow')
+    .dark();
+  
   $locationProvider.html5Mode(true);
-});
+}]);

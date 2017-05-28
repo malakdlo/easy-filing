@@ -1,0 +1,54 @@
+.md-inline-form.inputdemoBasicUsage(layout='column', ng-cloak='')
+	md-content(md-theme='docs-dark', layout-gt-sm='row', layout-padding='')
+		div
+			md-input-container
+				label Title
+				input(ng-model='user.title')
+			md-input-container
+				label Email
+				input(ng-model='user.email', type='email')
+	md-content(layout-padding='')
+		div
+			form(name='userForm')
+				div(layout-gt-xs='row')
+					md-input-container.md-block(flex-gt-xs='')
+						label Company (Disabled)
+						input(ng-model='user.company', disabled='')
+					md-input-container
+						label Enter date
+						md-datepicker(ng-model='user.submissionDate')
+				div(layout-gt-sm='row')
+					md-input-container.md-block(flex-gt-sm='')
+						label First name
+						input(ng-model='user.firstName')
+					md-input-container.md-block(flex-gt-sm='')
+						label
+							| Long Last Name That Will Be Truncated And 3 Dots (Ellipsis) Will Appear At The End
+						input(ng-model='theMax')
+				md-input-container.md-block
+					label Address
+					input(ng-model='user.address')
+				md-input-container.md-block(md-no-float='')
+					input(ng-model='user.address2', placeholder='Address 2')
+				div(layout-gt-sm='row')
+					md-input-container.md-block(flex-gt-sm='')
+						label City
+						input(ng-model='user.city')
+					md-input-container.md-block(flex-gt-sm='')
+						label State
+						md-select(ng-model='user.state')
+							md-option(ng-repeat='state in states', value='{{state.abbrev}}')
+								| {{state.abbrev}}
+					md-input-container.md-block(flex-gt-sm='')
+						label Postal Code
+						input(name='postalCode', ng-model='user.postalCode', placeholder='12345', required='', ng-pattern='/^[0-9]{5}$/', md-maxlength='5')
+						div(ng-messages='userForm.postalCode.$error', role='alert', multiple='')
+							.my-message(ng-message='required') You must supply a postal code.
+							.my-message(ng-message='pattern')
+								| That doesn't look like a valid postal
+								| code.
+							.my-message(ng-message='md-maxlength')
+								| Don't use the long version silly...we don't need to be that specific...
+				md-input-container.md-block
+					label Biography
+					textarea(ng-model='user.biography', md-maxlength='150', rows='5', md-select-on-focus='')

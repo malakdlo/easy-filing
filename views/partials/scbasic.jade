@@ -1,0 +1,96 @@
+div.md-inline-form.inputdemoBasicUsage(layout='column', ng-cloak='')
+	md-content(md-theme='docs-dark', layout-gt-sm='row', layout-padding='', layout-align='center')
+		div(ng-switch='selection')
+			div(ng-switch-when='q1')
+				md-card
+					md-card-title
+						md-card-title-text
+							span.md-headline Have you asked the defendant to pay you?
+					md-card-content
+						p
+							| You need to ask before you can file, the court requires it.
+					md-card-actions(layout='column', layout-align='start')
+						md-button(ng-click='incrementStep()') Yes
+						md-button(ng-click='demandLetter()') No
+			div(ng-switch-when='q2')
+				md-card
+					md-card-title
+						md-card-title-text
+							span.md-headline State Specifics
+					md-card-content
+						div(layout='row', layout-align='space-between center')
+							span I would like to file against a 
+							md-select.md-no-underline(ng-model='defendantState', placeholder='State')
+								md-option
+									em None
+								md-option(ng-repeat='x in states', value='{{x}}')  {{x}} 
+							span  based 
+							md-select.md-no-underline(ng-model='defendantType', placeholder='Type')
+								md-option
+									em None
+								md-option(ng-repeat='x in types', value='{{x}}')  {{x}} 
+							span  for 
+							md-input-container
+								input(name='amount', type='number', placeholder='Amount', ng-model='amount', ng-required='true')
+					md-card-actions(layout='column', layout-align='start')
+						md-button(ng-click='canFile(defendantState, amount)') Can I file?
+					md-card-actions(ng-if='passBasics', layout='column', layout-align='center')
+						span Yep, you can file!
+						md-button(ng-click='twoToThree()') Next Step
+			div(ng-switch-when='q3')
+				md-card
+					md-card-title
+						md-card-title-text
+							span.md-headline Last questions!
+							span.md-subheadline Answering yes is rare, but if you answer no to all of them, you can file!
+					md-card-content
+						div(layout='row', layout-align='space-between center')
+							span Have you filed more than 2 claims this year for more than $2,500?
+							md-select.md-no-underline(ng-model='q3q1', placeholder='Select')
+								md-option
+									em None
+								md-option(value='false') Yes
+								md-option(value='true') No
+						div(layout='row', ng-show="q3q1 == 'false'", layout-align='center')
+							span
+								| Sorry, you are not eligable to file more than 2 claims for more than $2,500 in 1 year.
+						div(layout='row', ng-show="q3q1 == 'true'", layout-align='space-between center')
+							span Are you suing a public entity?
+							md-select.md-no-underline(ng-model='q3q2', placeholder='Select')
+								md-option
+									em None
+								md-option(value='false') Yes
+								md-option(value='true') No
+						div(layout='row', ng-show="q3q2 == 'false'", layout-align='space-between center')
+							span Have you filed a written claim?
+							md-select.md-no-underline(ng-model='q3q2f', placeholder='Select')
+								md-option
+									em None
+								md-option(value='true') Yes
+								md-option(value='false') No
+						div(layout='row', ng-show="q3q2f == 'true'", layout-align='space-between center')
+							md-input-container
+								label What was the date filed?
+								md-datepicker(ng-model='submissionDate')
+						div(layout='row', ng-show="q3q2f == 'false'", layout-align='center')
+							span
+								| Sorry, you are not eligable to file more than 2 claims for more than $2,500 in 1 year.
+						div(layout='row', ng-show="q3q2 == 'true'", layout-align='space-between center')
+							span Have you filed more than 12 claims in 12 months?
+							md-select.md-no-underline(ng-model='q3q3', placeholder='Select')
+								md-option
+									em None
+								md-option(value='false') Yes
+								md-option(value='true') No
+						div(layout='row', ng-show="q3q3 == 'false'", layout-align='space-between center')
+							h2 Wow, you're an avid filer! That's great!
+							h4
+								| Just a heads up, you're going to have to pay an increased filing fee for case #13 and beyond.
+							h2 If that's OK, click below to get started filing!
+							md-button.md-raised(ng-href='file') Let's File!
+						div(layout='row', ng-show="q3q3 == 'true'", layout-align='center')
+							h1 Awesome! You're all set to file! Would you like to do so now?
+							div(layout='column', layout-xs='column')
+								md-button.md-raised(ng-href='file', flex='') Let's File!
+								md-button.md-raised(ng-href='resources', flex='') Not Now
+					md-card-actions
