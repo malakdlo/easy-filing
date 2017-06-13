@@ -2,7 +2,8 @@ extends layout
 
 block body
   div(ng-controller='AppCtrl')
-    h2 Hello {{name}}
+    h2 Small Claims Filing App
+    h3 File without the fuss
     ul.menu
       li
         a(ng-href='/scbasic') Can You File?
@@ -12,30 +13,18 @@ block body
     div
       | Angular seed app: v
       span(app-version)
-  
-  // Angular 1.5.5
-  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js')
-  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js')
-  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js')
-  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js')
-  // Angular Material CDN
-  script(src='//cdn.gitcdn.link/cdn/angular/bower-material/v1.1.4/angular-material.js')
-  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js')
-  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js')
-  script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js')
+
+  // Angular 1.6.1
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js')
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js')
+  script(src='//ajax.googleapis.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js')
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.min.js')
+  script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js')
   // Bootstrap UI
   script(src='https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js')
-
+  // Local
   script(src='js/app.js')
   script(src='js/services.js')
   script(src='js/controllers.js')
   script(src='js/filters.js')
   script(src='js/directives.js')
-  
-  //-
-    script(src='//ajax.googleapis.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js')
-    script(src='js/lib/angular/angular.js')
-    script(src='js/lib/angular/angular-route.js')
-    script(src='js/lib/angular/angular-animate.js')
-    script(src='js/lib/angular/angular-sanitize.js')
-    script(src='js/lib/angular/ui-bootstrap-tpls-2.5.0.js')

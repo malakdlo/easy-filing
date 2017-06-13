@@ -5,16 +5,14 @@
 angular.module('myApp', [
   'ui.bootstrap',
   'ngRoute',
-  'ngAnimate', 
+  'ngAnimate',
   'ngSanitize',
-  'ngMaterial',
-  'ngMessages', 
   'myApp.controllers',
   'myApp.filters',
   'myApp.services',
   'myApp.directives'
 ]).
-config(['$routeProvider','$locationProvider', '$mdThemingProvider',function ($routeProvider, $locationProvider, $mdThemingProvider) {
+config(['$routeProvider','$locationProvider',function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/sc100', {
       templateUrl: 'partials/other/sc100'
@@ -32,13 +30,9 @@ config(['$routeProvider','$locationProvider', '$mdThemingProvider',function ($ro
       controller: 'ScBasicCtrl'
     }).
     otherwise({
-      redirectTo: '/scbasic'
+      redirectTo: '/filesc'
     });
-  
-  $mdThemingProvider.theme('docs-dark', 'default')
-    .primaryPalette('yellow')
-    .dark();
-    
+
   $locationProvider.html5Mode(true);
 }])
 
@@ -84,11 +78,11 @@ config(['$routeProvider','$locationProvider', '$mdThemingProvider',function ($ro
     otherwise({
       redirectTo: '/scbasic'
     });
-  
+
   $mdThemingProvider.theme('docs-dark', 'default')
     .primaryPalette('yellow')
     .dark();
-    
+
   $locationProvider.html5Mode(true);
 }])
 */
@@ -111,7 +105,7 @@ config(['$stateProvider', '$urlRouterProvider','$mdThemingProvider',function($st
   $mdThemingProvider.theme('docs-dark', 'default')
     .primaryPalette('yellow')
     .dark();
-  
+
   }]);
 
 */
