@@ -1,5 +1,5 @@
-form(method='post', action='/fillpdf')
-	div(ng-switch='selection')
+div(ng-switch='selection')
+	form(method='post', action='/fillpdf')
 		div(ng-switch-when='plaintiff')
 			.md-padding.selectdemoOptionGroups(ng-cloak='')
 				div(layout='row')
@@ -108,5 +108,4 @@ form(method='post', action='/fillpdf')
 		div(ng-switch-when='dispute')
 		div(ng-switch-when='court')
 		div(ng-switch-when='final')
-			p The Final Step. Press submit
-	md-button(type='submit') Submit
+			md-button(type='submit') Submit

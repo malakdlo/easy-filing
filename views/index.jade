@@ -5,13 +5,9 @@ block body
     h2 Hello {{name}}
     ul.menu
       li
-        a(href='sc100') sc100
+        a(ng-href='/scbasic') Can You File?
       li
-        a(href='scbasic') SC Quiz Angular
-      li
-        a(href='sc100full') SC Quiz Bootstrap
-      li
-        a(href='file') File
+        a(ng-href='/file') File a Claim
     div(ng-view)
     div
       | Angular seed app: v
@@ -26,7 +22,6 @@ block body
   script(src='//cdn.gitcdn.link/cdn/angular/bower-material/v1.1.4/angular-material.js')
   script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js')
   script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js')
-  script(src='//s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js')
   script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js')
   // Bootstrap UI
   script(src='https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js')
@@ -38,6 +33,7 @@ block body
   script(src='js/directives.js')
   
   //-
+    script(src='//ajax.googleapis.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js')
     script(src='js/lib/angular/angular.js')
     script(src='js/lib/angular/angular-route.js')
     script(src='js/lib/angular/angular-animate.js')

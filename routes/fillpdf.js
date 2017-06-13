@@ -103,12 +103,12 @@ router.post('/', (req, res) => {
   pg2_s1_pListNames: req.body.p1First + " " + req.body.p1Last,
   pg2_s1_caseNum: '',
   pg2_s2_p1_name: req.body.p1First + " " + req.body.p1Last,
-  pg2_s2_p1_phone: req.body.p1Phone,
-  pg2_s2_p1_street: '123 Fake St',
-  pg2_s2_p1_state: 'Los Angeles',
-  pg2_s2_p1_city: 'Ca',
-  pg2_s2_p1_zip: '90089',
-  pg2_s2_p1_street2: '',
+  pg2_s2_p1_phone: req.body.d1Phone,
+  pg2_s2_p1_street: req.body.p1Street1,
+  pg2_s2_p1_state: req.body.p1State1,
+  pg2_s2_p1_city: req.body.p1City1,
+  pg2_s2_p1_zip: req.body.p1Zip1,
+  pg2_s2_p1_street2: req.body.p1Street2,
   pg2_s2_p1_city2: '',
   pg2_s2_p1_state2: '',
   pg2_s2_p1_zip2: '' 
@@ -123,12 +123,14 @@ router.post('/', (req, res) => {
   const rando = getRandomInt(1, 10000);
 
   pdffiller.fillForm( sourcePDF, data)
-    .toFile('./pdfs/sc/scResults' + req.body.p1First + "-" + req.body.p1Last + '-' + rando + '.pdf')
+    .toFile('./pdfs/sc/scResults-' + req.body.p1First + "-" + req.body.p1Last + '-' + rando + '.pdf')
     .catch((err) => {
         console.log(err);
     }); // End fillForm Method
   
-}) // End Router Post
+  res.send("End");
+  
+}); // End Router Post
 
 module.exports = router
 
