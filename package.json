@@ -10,7 +10,16 @@
   "scripts": {
     "start": "node app.js"
   },
+  "engines": {
+    "node": "6.10.0"
+  },
   "dependencies": {
+    "@uirouter/angularjs": "latest",
+    "angular": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-bootstrap": "^0.12.2",
+    "angular-route": "^1.6.1",
+    "angular-sanitize": "^1.6.1",
     "body-parser": "^1.17.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
