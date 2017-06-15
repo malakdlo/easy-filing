@@ -1,6 +1,6 @@
 'use strict';
 
-/* Controllers */  
+/* Controllers */
 angular.module('myApp.controllers', []).
   controller('AppCtrl', function ($scope, $http) {
     $http.get('api/name').then(successCallback, errorCallback);
@@ -16,16 +16,16 @@ angular.module('myApp.controllers', []).
 
   }).
   controller('ScBasicCtrl', function($scope){
-  
+
     /******************** Data **********************/
     // Steps
-//      $scope.steps = ['q1', 'q2', 'q3'] // End Steps 
+//      $scope.steps = ['q1', 'q2', 'q3'] // End Steps
 //      $scope.selection = $scope.steps[2];
     // Steps
-      $scope.steps = ['plaintiff', 'defendant', 'final','dispute', 'court']; // End Steps 
+      $scope.steps = ['plaintiff', 'defendant', 'final','dispute', 'court']; // End Steps
       $scope.selection = $scope.steps[0];
-    
-    // Small Claims Form Info 
+
+    // Small Claims Form Info
       $scope.scFormInfo = {
         pNumber : [1, 2, 3, 4, 5, "Greater than 5"],
         pType : ['Business', 'Person', 'Government Official']
@@ -38,7 +38,7 @@ angular.module('myApp.controllers', []).
             filingRanges:{
               min: 1000,
               mid: 5000,
-              max: 10000  
+              max: 10000
             },
             filingFees:{
               min: 30,
@@ -51,7 +51,7 @@ angular.module('myApp.controllers', []).
             filingRanges:{
               min: 1000,
               mid: 5000,
-              max: 10000  
+              max: 10000
             },
             filingFees:{
               min: 30,
@@ -64,7 +64,7 @@ angular.module('myApp.controllers', []).
             filingRanges:{
               min: 1000,
               mid: 5000,
-              max: 10000  
+              max: 10000
             },
             filingFees:{
               min: 30,
@@ -123,7 +123,7 @@ angular.module('myApp.controllers', []).
           $scope.selection = $scope.steps[previousStep];
         }
       }; // end decrementStep()
-    
+
     // to-do list
     $scope.toDoList = [];
     $scope.addToDo = function(item){
@@ -131,9 +131,9 @@ angular.module('myApp.controllers', []).
         $scope.toDoList.push(item);
         console.log($scope.toDoList);
       }
-    
+
     // SC Quiz specific
-    
+
     // Complete for SC Quiz
       // Q2
     $scope.canFile = function(state, amount){
@@ -183,7 +183,7 @@ angular.module('myApp.controllers', []).
       // General
 
       // Plaintiff
-        // : SC100 Greater than 2 Plaintiffs 
+        // : SC100 Greater than 2 Plaintiffs
     $scope.lessThanTwo = function(item){
       $scope.addToDo(item);
       $scope.pNumber = 1;
@@ -193,7 +193,7 @@ angular.module('myApp.controllers', []).
       $scope.pType = 'Not Fictitious';
     }
     $scope.isFictitious1 = function(){
-      // Add SC-103 to to-do list 
+      // Add SC-103 to to-do list
       $scope.isFictious = true;
       return $scope.isFictious;
     }
@@ -208,7 +208,7 @@ angular.module('myApp.controllers', []).
       $scope.incrementStep();
     }
 
-    // Defendant 
+    // Defendant
       // Q1 -> Q2
     $scope.dFinal = function(){
       $scope.incrementStep();
@@ -219,9 +219,9 @@ angular.module('myApp.controllers', []).
     }
 
     // Not Complete for SC Form
-    
-  
-   /* 
+
+
+   /*
    // SC specific
       // Complete
         // Q2
@@ -267,7 +267,7 @@ angular.module('myApp.controllers', []).
       }
       $scope.cantContinue = function(){};
 
-  
+
     // User Info
       $scope.user = {}
       */
@@ -275,10 +275,10 @@ angular.module('myApp.controllers', []).
   controller('ScFormLogicCtrl', function($scope){
     /******************** Data **********************/
     // Steps
-      $scope.steps = ['plaintiff', 'defendant', 'final','dispute', 'court']; // End Steps 
+      $scope.steps = ['plaintiff', 'defendant', 'final','dispute', 'court']; // End Steps
       $scope.selection = $scope.steps[0];
-    
-    // Small Claims Form Info 
+
+    // Small Claims Form Info
       $scope.scFormInfo = {
         pNumber : [1, 2, 3, 4, 5, "Greater than 5"],
         pType : ['Business', 'Person', 'Government Official']
@@ -290,7 +290,7 @@ angular.module('myApp.controllers', []).
             filingRanges:{
               min: 1000,
               mid: 5000,
-              max: 10000  
+              max: 10000
             },
             filingFees:{
               min: 30,
@@ -303,7 +303,7 @@ angular.module('myApp.controllers', []).
             filingRanges:{
               min: 1000,
               mid: 5000,
-              max: 10000  
+              max: 10000
             },
             filingFees:{
               min: 30,
@@ -316,7 +316,7 @@ angular.module('myApp.controllers', []).
             filingRanges:{
               min: 1000,
               mid: 5000,
-              max: 10000  
+              max: 10000
             },
             filingFees:{
               min: 30,
@@ -375,7 +375,7 @@ angular.module('myApp.controllers', []).
           $scope.selection = $scope.steps[previousStep];
         }
       }; // end decrementStep()
-    
+
     // to-do list
     $scope.toDoList = [];
     $scope.addToDo = function(item){
@@ -383,7 +383,7 @@ angular.module('myApp.controllers', []).
         $scope.toDoList.push(item);
         console.log($scope.toDoList);
       }
-    
+
     // SC Quiz specific
       // Complete for SC Quiz
         // Q2
@@ -428,13 +428,13 @@ angular.module('myApp.controllers', []).
 
       }
       $scope.cantContinue = function(){};
-  
+
     // SC Form specific
       // Complete for SC Form
         // General
-        
+
         // Plaintiff
-          // : SC100 Greater than 2 Plaintiffs 
+          // : SC100 Greater than 2 Plaintiffs
       $scope.lessThanTwo = function(item){
         $scope.addToDo(item);
         $scope.pNumber = 1;
@@ -444,7 +444,7 @@ angular.module('myApp.controllers', []).
         $scope.pType = 'Not Fictitious';
       }
       $scope.isFictitious1 = function(){
-        // Add SC-103 to to-do list 
+        // Add SC-103 to to-do list
         $scope.isFictious = true;
         return $scope.isFictious;
       }
@@ -458,8 +458,8 @@ angular.module('myApp.controllers', []).
       $scope.q1q2 = function(){
         $scope.incrementStep();
       }
-      
-      // Defendant 
+
+      // Defendant
         // Q1 -> Q2
       $scope.dFinal = function(){
         $scope.incrementStep();
@@ -469,10 +469,49 @@ angular.module('myApp.controllers', []).
       $scope.returnFinal = function(){
         return $scope.final = true;
       }
-      
+
       // Not Complete for SC Form
-   
-  });
 
-
-
+  })
+  .controller('FormController', function($scope, SC100Factory){
+    $scope.oneAtATime = true;
+    $scope.scFormInfo = {
+          "plaintiff":{
+            "s1":{
+              num : [1, 2, 3, 4, 5, "Greater than 5"],
+              finished : false
+            },
+            "s2":{
+              type : ['Corp', 'Ficticious Business', 'Individual', 'Government Official'],
+              finished: false
+            }
+          },
+          "defendant":{
+            "s1":{
+              num : [1, 2, 3, 4, 5, "Greater than 5"],
+              finished : false
+            },
+            "s2":{
+              type : ['Corp', 'Ficticious Business', 'Individual', 'Government Official'],
+              militaryDuty: ['Yes', 'No'],
+              finished: false
+            }
+          }
+        };
+    $scope.status = {
+      isCustomHeaderOpen: false,
+      isFirstOpen: true,
+      isFirstDisabled: false
+    };
+    $scope.SC100Info = SC100Factory.info
+  })
+  .factory('SC100Factory', function(){
+    var SC100Factory = this;
+    SC100Factory.info = {
+      "s1": {},
+      "s2": {},
+      "s3": {},
+      "s4": {}
+    };
+    return SC100Factory;
+  })
