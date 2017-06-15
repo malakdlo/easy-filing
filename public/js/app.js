@@ -26,11 +26,10 @@ config(['$routeProvider','$locationProvider',function ($routeProvider, $location
       controller: 'ScBasicCtrl'
     }).
     when('/file', {
-      templateUrl: 'partials/filesc',
-      controller: 'ScBasicCtrl'
+      templateUrl: 'partials/sc100-jade'
     }).
     otherwise({
-      redirectTo: '/filesc'
+      redirectTo: '/file'
     });
 
   $locationProvider.html5Mode(true);
