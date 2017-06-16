@@ -1,5 +1,1 @@
-node_modules
-npm-debug.log
-public/pdfs/*
-!public/pdfs/sc100-fillable.pdf
-
+.DS_Store
