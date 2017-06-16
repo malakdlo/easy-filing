@@ -1,16 +1,4 @@
 div(ng-controller='FormController')
-  script(type='text/ng-template', id='group-template.html').
-    <div class="panel-heading">
-    <h4 class="panel-title" style="color:#fa39c3">
-    <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
-    <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
-    </span>
-    </a>
-    </h4>
-    </div>
-    <div class="panel-collapse collapse" uib-collapse="!isOpen">
-    <div class="panel-body" style="text-align: right" ng-transclude></div>
-    </div>
   form(name='sc100Form', method='post', action='/fillpdf', novalidate='')
     uib-accordion(close-others='oneAtATime')
       .panel-default(uib-accordion-group='', heading='How to Use', is-open='status.isFirstOpen', is-disabled='status.isFirstDisabled')
@@ -158,6 +146,7 @@ div(ng-controller='FormController')
               label(for='activeMilitaryNames') Plese list their name here.
               input(type='text', name='activeMilitaryNames', ng-model='SC100Info.s2.activeMilitaryNames')
       // End defendant accordion-group div
+      // Begin dispute details accordion-group div
       .panel-default(uib-accordion-group='', heading='Dispute Details')
         .well
           .form-group.row
@@ -184,16 +173,41 @@ div(ng-controller='FormController')
               br
               textarea(name='howDetails1', ng-model='sc100Deets.dispute.how', rows='1', cols='30')
               textarea(name='howDetails2', ng-model='sc100Deets.dispute.how2', rows='1', cols='30')
+      // End dispute details accordion-group div
+      // Begin final details group
       .panel-default(uib-accordion-group='', heading='Final Details')
         fieldset
+          // Asked the defendant?
           .form-group.row
             .col-md-6
-              label(for='asked_defendant_button') Have you asked the defendant? (Button)
-              select(ng-model='SC100Info.s4.asked_defendant_button', name='asked_defendant_button')
-                option(value='No') No
+              label(for='askedDefendant') Have you asked the defendant to pay you?
+              p
+                | Will be filled in from frontend app object, won't be at this point if they did not ask.
+              select(ng-model='SC100Info.s4.askedDefendant', name='askedDefendant')
                 option(value='Yes') Yes
+                option(value='No') No
+            .col-md-6(ng-show="SC100Info.s4.askedDefendant == 'No'")
+              label(for='defendantNotAsked') Why not?
+              input(type='text', name='defendantNotAsked1', ng-model='SC100Info.s4.defendantNotAsked1', col='3')
+              input(type='text', name='defendantNotAsked2', ng-model='SC100Info.s4.defendantNotAsked2', col='3')
+          // End asked the defendant?
+          // Begin courthouse question
+          .form-group.row
             .col-md-6
-              label(for='asked_defendant_text') Have you asked the defendant? (Text)
-              p Type in the letter x for Yes, leave blank for No
-              input(type='text', name='asked_defendant_text', ng-model='SC100Info.s4.asked_defendant_text', col='3')
+              label(for='courthouse') Why are you filing at this courthouse?
+              p Will be filled in from frontend app object
+              select(name='courthouse', ng-model='SC100Info.s4.courthouse')
+                option(value=' ')
+                option(value='a') A
+                option(value='b') B
+                option(value='c') C
+                option(value='d') D
+                option(value='other') Other
+            // End select
+            .col-md-12(ng-show="SC100Info.s4.courthouse == 'other'")
+              label(for='courthosueOther') Please specify
+              input(type='text', name='courthouseOther1', ng-model='SC100Info.s4.courthouseOther1')
+              input(type='text', name='courthouseOther2', ng-model='SC100Info.s4.courthouseOther2')
+            // End Other
+          // End courthouse question
     button(type='submit') Submit

@@ -1,17 +1,4 @@
 <div ng-controller="FormController">
-      <script type="text/ng-template" id="group-template.html">
-        <div class="panel-heading">
-        <h4 class="panel-title" style="color:#fa39c3">
-        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
-        <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
-        </span>
-        </a>
-        </h4>
-        </div>
-        <div class="panel-collapse collapse" uib-collapse="!isOpen">
-        <div class="panel-body" style="text-align: right" ng-transclude></div>
-        </div>
-      </script>
       <form name="sc100Form" method="post" action="/fillpdf" novalidate="">
         <uib-accordion close-others="oneAtATime">
           <div uib-accordion-group="" heading="How to Use" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" class="panel-default">
@@ -212,6 +199,7 @@
             </fieldset>
           </div>
           <!-- End defendant accordion-group div-->
+          <!-- Begin dispute details accordion-group div -->
           <div uib-accordion-group="" heading="Dispute Details" class="panel-default">
             <div class="well">
               <div class="form-group row">
@@ -245,22 +233,51 @@
               </div>
             </div>
           </div>
+          <!-- End dispute details accordion-group div -->
+          <!-- Begin final details group -->
           <div uib-accordion-group="" heading="Final Details" class="panel-default">
             <fieldset>
+              <!-- Asked the defendant? -->
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="asked_defendant_button">Have you asked the defendant? (Button)</label>
-                  <select ng-model="SC100Info.s4.asked_defendant_button" name="asked_defendant_button">
-                    <option value="No">No</option>
+                  <label for="askedDefendant">Have you asked the defendant to pay you?</label>
+                  <p>Will be filled in from frontend app object, won't be at this point if they did not ask.</p>
+                  <select ng-model="SC100Info.s4.askedDefendant" name="askedDefendant">
                     <option value="Yes">Yes</option>
+                    <option value="No">No</option>
                   </select>
                 </div>
-                <div class="col-md-6">
-                  <label for="asked_defendant_text">Have you asked the defendant? (Text)</label>
-                  <p>Type in the letter x for Yes, leave blank for No</p>
-                  <input type="text" name="asked_defendant_text" ng-model="SC100Info.s4.asked_defendant_text" col="3"/>
+                <div class="col-md-6" ng-show="SC100Info.s4.askedDefendant == 'No'">
+                  <label for="defendantNotAsked">Why not?</label>
+                  <input type="text" name="defendantNotAsked1" ng-model="SC100Info.s4.defendantNotAsked1" col="3"/>
+                  <input type="text" name="defendantNotAsked2" ng-model="SC100Info.s4.defendantNotAsked2" col="3"/>
                 </div>
               </div>
+              <!--End asked the defendant?-->
+              <!--Begin courthouse question-->
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="courthouse">Why are you filing at this courthouse?</label>
+                  <p>Will be filled in from frontend app object</p>
+                  <select name="courthouse" ng-model="SC100Info.s4.courthouse">
+                    <option value=" "></option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <!--End select-->
+                <div class="col-md-12" ng-show="SC100Info.s4.courthouse == 'other'">
+                  <label for="courthosueOther">Please specify</label>
+                  <input type="text" name="courthouseOther1" ng-model="SC100Info.s4.courthouseOther1">
+                  <input type="text" name="courthouseOther2" ng-model="SC100Info.s4.courthouseOther2">
+                </div>
+                <!--End Other-->
+              </div>
+              <!--End courthouse question-->
+
             </fieldset>
           </div>
         </uib-accordion>
