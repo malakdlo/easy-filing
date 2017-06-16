@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
     td_courtinfo3_page1: '',
     td_date4_page1: '',
     td_clerkname_page1: '',
-    pg2_s1_pListNames: '',
+    pg2_s1_pListNames: req.body.pfirstName + " " + req.body.plastName,
     pg2_s1_caseNum: '',
     pg2_s2_p1_phone: req.body.pphone,
     pg2_s2_p1_street: req.body.pstreetAddress,
@@ -50,16 +50,18 @@ router.post('/', (req, res) => {
     pg2_s2_p2_state2: '',
     pg2_s2_p2_zip2: '',
     pg2_s2_check_dba: req.body.isDba || '',
+    pg2_s2_check_moreThanTwoP: req.body.moreThanTwoP || '',
+    pg2_s2_check_payLender: req.body.payLender || '',
     pg2_s3_d1_phone: req.body.dphone,
     pg2_s3_d1_name: req.body.dfirstName + " " + req.body.dlastName,
     pg2_s3_d1_street: req.body.dstreetAddress,
     pg2_s3_d1_city: req.body.dstreetCity,
     pg2_s3_d1_state: req.body.dstreetState,
     pg2_s3_d1_zip: req.body.dstreetZip,
-    pg2_s3_d1_street2: '',
-    pg2_s3_d1_city2: '',
-    pg2_s3_d1_state2: '',
-    pg2_s3_d1_zip2: '',
+    pg2_s3_d1_street2: req.body.dmailingAddress,
+    pg2_s3_d1_city2: req.body.dmailingCity,
+    pg2_s3_d1_state2: req.body.dmailingState,
+    pg2_s3_d1_zip2: req.body.dmailingZip,
     pg2_s3_agent_name: '',
     pg2_s3_agent_jobTitle: '',
     pg2_s3_agent_street: '',
@@ -78,17 +80,14 @@ router.post('/', (req, res) => {
     pg2_s4_calculate_line1: req.body.howDetails1,
     pg2_s4_calculate_line2: req.body.howDetails2,
     pg2_s4_check_needSpace: '',
-    pg3_s1_listNames: '',
+    pg3_s1_listNames: req.body.pfirstName + " " + req.body.plastName,
     pg3_s1_caseNum: '',
-    pg3_s2_whyNot_line1: '',
-    pg3_s2_whyNot_line2: '',
-    pg3_s3_check_b: '',
-    pg3_s3_check_a: '',
-    pg3_s3_check_c: '',
-    pg3_s3_check_d: '',
-    pg3_s3_check_other: '',
-    pg3_s3_check_other_line1: '',
-    pg3_s3_check_other_line2: '',
+    asked_defendant_button: req.body.askedDefendant || '',
+    pg3_s2_whyNot_line1: req.body.defendantNotAsked1,
+    pg3_s2_whyNot_line2: req.body.defendantNotAsked2,
+    pg3_s3_courthouse: req.body.courthouse || '',
+    pg3_s3_check_other_line1: req.body.courthouseOther1,
+    pg3_s3_check_other_line2: req.body.courthouseOther2,
     pg3_s4_zipOfDef: '',
     pg3_s5_yes: '',
     pg3_s5_no: '',
@@ -106,10 +105,7 @@ router.post('/', (req, res) => {
     pg3_s9_plaintiffPrint1: '',
     pg3_s9_plaintiffPrint2: '',
     pg3_s9_plaintiffSig1: '',
-    pg3_s9_plaintiffSig2: '',
-    asked_defendant_button: req.body.asked_defendant_button || '',
-    pg2_s2_check_moreThanTwoP: req.body.moreThanTwoP || '',
-    pg2_s2_check_payLender: req.body.payLender || ''
+    pg3_s9_plaintiffSig2: ''
   }
 
 
@@ -129,13 +125,6 @@ router.post('/', (req, res) => {
     .toFile(filelocation)
     .then(() => {
       console.log("Success, PDF has been created at " + filelocation);
-      // const file = fs.createReadStream(filelocation);
-      // const stat = fs.statSync(filelocation);
-      // res.setHeader('Content-Length', stat.size);
-      // res.setHeader('Content-type', 'application/pdf');
-      // res.setHeader('Content-disposition', 'attachment; filename=yourclaim.pdf');
-      // file.pipe(res)
-      // res.send("Congrats, " + req.body.pfirstName + ", you have just filled out a claim form that is ready to be filed!");
       res.redirect('pdfs/sc/' + filename);
 
     })
@@ -146,33 +135,3 @@ router.post('/', (req, res) => {
 }); // End Router Post
 
 module.exports = router
-
-
-/*
-const fieldJson = [
-  {
-    "title" : "pg2_s2_p1_name",
-    "fieldType" : "Text",
-    "fieldValue" : req.body.pfirstName + " " + req.body.plastName
-  },
-  {
-    "title" : "pg2_s2_check_dba",
-    "fieldType" : "Checkbox",
-    "fieldValue" : req.body.isDba
-  },
-  {
-    "title" : "asked_defendant_button",
-    "fieldType" : "Button",
-    "fieldValue" : req.body.asked_defendant_button
-  },
-  {
-    "title" : "asked_defendant_text_yes",
-    "fieldType" : "Text",
-    "fieldValue" : req.body.asked_defendant_text
-  }
-];
-*/
-
-// console.log("Field JSON: ", fieldJson);
-//const FDFData = pdffiller.convFieldJson2FDF(fieldJson);
-//console.log("FDF Data", FDFData);

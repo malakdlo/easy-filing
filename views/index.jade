@@ -2,17 +2,14 @@ extends layout
 
 block body
   div(ng-controller='AppCtrl')
-    h2 Hello {{name}}
     ul.menu
-      li
-        a(ng-href='/scbasic') Can You File?
       li
         a(ng-href='/file') File a Claim
     div(ng-view)
     div
       | Angular seed app: v
       span(app-version)
-  
+
   // Angular 1.5.5
   script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js')
   script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js')
