@@ -5,7 +5,7 @@ const fs = require('fs')
 
 router.post('/', (req, res) => {
 
-  const sourcePDF = "./public/pdfs/sc/sc100-fillable.pdf";
+  const sourcePDF = "/public/pdfs/sc/sc100-fillable.pdf";
 
 
   const data = {
@@ -119,13 +119,13 @@ router.post('/', (req, res) => {
   }
   const rando = getRandomInt(1, 10000);
   const filename = "scResults-"  + req.body.pfirstName + "-" + req.body.plastName + "-" + rando + ".pdf";
-  const filelocation = "./public/pdfs/sc/" + filename
+  const filelocation = "/public/pdfs/sc/" + filename
 
   pdffiller.fillForm( sourcePDF, data)
     .toFile(filelocation)
     .then(() => {
       console.log("Success, PDF has been created at " + filelocation);
-      res.redirect('pdfs/sc/' + filename);
+      res.redirect('/pdfs/sc/' + filename);
 
     })
     .catch((err) => {
