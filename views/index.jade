@@ -2,7 +2,6 @@ extends layout
 
 block body
   div(ng-controller='AppCtrl')
-    h2 Hello {{name}}
     ul.menu
       li
         a(ng-href='/scbasic') Can You File?
@@ -12,7 +11,7 @@ block body
     div
       | Angular seed app: v
       span(app-version)
-  
+
   // Angular 1.5.5
   script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js')
   script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js')
@@ -31,7 +30,7 @@ block body
   script(src='js/controllers.js')
   script(src='js/filters.js')
   script(src='js/directives.js')
-  
+
   //-
     script(src='//ajax.googleapis.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js')
     script(src='js/lib/angular/angular.js')

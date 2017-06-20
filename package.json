@@ -4,13 +4,23 @@
   "description": "An app for filing local court documents.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/malakdlo/angular-express-seed"
+    "url": "https://github.com/malakdlo/easy-filing"
   },
   "private": true,
   "scripts": {
+    "prestart": "npm install",
     "start": "node app.js"
   },
+  "engines": {
+    "node": "6.10.0"
+  },
   "dependencies": {
+    "@uirouter/angularjs": "latest",
+    "angular": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-bootstrap": "^0.12.2",
+    "angular-route": "^1.6.1",
+    "angular-sanitize": "^1.6.1",
     "body-parser": "^1.17.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",

@@ -1,0 +1,213 @@
+div(ng-controller='FormController')
+  form(name='sc100Form', method='post', action='/fillpdf', novalidate='')
+    uib-accordion(close-others='oneAtATime')
+      .panel-default(uib-accordion-group='', heading='How to Use', is-open='status.isFirstOpen', is-disabled='status.isFirstDisabled')
+        ol
+          li Click on the section title to open the form fields.
+          li Fill out all 4 sections.
+          li Press submit to download your filled out Small Claims filing.
+      .panel-default(uib-accordion-group='', heading='Plaintiff ')
+        fieldset
+          h1 Plaintiff
+          // Type
+          .form-group.row
+            .col-xs-6
+              label(for='p.type') Type
+              select(ng-model='p.type', ng-options='x for x in scFormInfo.plaintiff.s2.type')
+            // End type of plaintiff col
+          // First and Last
+          .form-group.row
+            .col-xs-6
+              label(for='p.firstName') First Name
+              input.form-control(type='text', name='pfirstName', ng-model='p.firstName')
+            .col-xs-6
+              label(for='p.lastName') Last Name
+              input.form-control(type='text', name='plastName', ng-model='p.lastName')
+          // Email and Phone
+          .form-group.row
+            .col-xs-6
+              label(for='p.email') Email
+              input.form-control(type='email', name='pemail', ng-model='p.email')
+            .col-xs-6
+              label(for='p.phone') Phone
+              input.form-control(type='tel', name='pphone', ng-model='p.phone')
+          hr
+          // Street Address
+          .form-group.row
+            .col-xs-12.col-md-12
+              label(for='p.streetAddress') Street Address
+              input.form-control(type='text', name='pstreetAddress', ng-model='p.streetAddress')
+            .col-xs-12.col-md-6
+              label(for='p.streetCity') City
+              input.form-control(type='text', name='pstreetCity', ng-model='p.streetCity')
+            .col-xs-6.col-md-2
+              label(for='p.streetState') State
+              input.form-control(type='text', name='pstreetState', ng-model='p.streetState')
+            .col-xs-6.col-md-4
+              label(for='p.streetZip') Zip
+              input.form-control(type='text', name='pstreetZip', ng-model='p.streetZip')
+          hr
+          // Mailing Address
+          .form-group.row
+            .col-xs-12.col-md-12
+              label(for='p.mailingAddress') Mailing Address (If Different)
+              input.form-control(type='text', name='pmailingAddress', ng-model='p.mailingAddress')
+            .col-xs-12.col-md-6
+              label(for='p.mailingCity') City
+              input.form-control(type='text', name='pmailingCity', ng-model='p.mailingCity')
+            .col-xs-6.col-md-2
+              label(for='p.mailingState') State
+              input.form-control(type='text', name='pmailingState', ng-model='p.mailingState')
+            .col-xs-6.col-md-4
+              label(for='p.mailingZip') Zip
+              input.form-control(type='text', name='pmailingZip', ng-model='p.mailingZip')
+          hr
+          .form-group.row
+            .col-xs-12.col-md-12
+              label(for='moreThanTwoP') Check here if your case has more than two plaintiffs.
+              input(type='checkbox', name='moreThanTwoP', ng-model='SC100Info.s1.moreThanTwoP')
+          .form-group.row
+            .col-xs-12.col-md-12
+              label(for='isDba') Check here if any of the plaintiffs are doing business under a fictitious name.
+              input(type='checkbox', name='isDba', ng-model='SC100Info.s1.isDBA')
+          .form-group.row
+            .col-xs-12.col-md-12
+              label(for='payLender')
+                | Check here if any plaintiff is a "licensee" or "deferred deposit originator" under Financial Code sections 23000 et seq.
+              input(type='checkbox', name='payLender', ng-model='SC100Info.s1.payLender')
+      // End plaintiff accordion-group div
+      .panel-default(uib-accordion-group='', heading='Defendant ')
+        fieldset
+          // Military and Type
+          .form-group.row
+            .col-xs-6
+              label(for='d.active') Is the defendant on active military duty?
+              select(ng-model='d.military', ng-options='x for x in scFormInfo.defendant.s2.militaryDuty')
+            .col-xs-6
+              label(for='d.type') Type
+              select(ng-model='d.type', ng-options='x for x in scFormInfo.defendant.s2.type')
+          // First and Last
+          .form-group.row
+            .col-xs-6
+              label(for='d.firstName') First Name
+              input.form-control(type='text', name='dfirstName', ng-model='d.firstName')
+            .col-xs-6
+              label(for='d.lastName') Last Name
+              input.form-control(type='text', name='dlastName', ng-model='d.lastName')
+          // Email and Phone
+          .form-group.row
+            .col-xs-6
+              label(for='d.email') Email
+              input.form-control(type='email', name='demail', ng-model='d.email')
+            .col-xs-6
+              label(for='d.phone') Phone
+              input.form-control(type='tel', name='dphone', ng-model='d.phone')
+          hr
+          // Street Address
+          .form-group.row
+            .col-xs-12.col-md-12
+              label(for='d.streetAddress') Street Address
+              input.form-control(type='text', name='dstreetAddress', ng-model='d.streetAddress')
+            .col-xs-12.col-md-6
+              label(for='d.streetCity') City
+              input.form-control(type='text', name='dstreetCity', ng-model='d.streetCity')
+            .col-xs-6.col-md-2
+              label(for='d.streetState') State
+              input.form-control(type='text', name='dstreetState', ng-model='d.streetState')
+            .col-xs-6.col-md-4
+              label(for='d.streetZip') Zip
+              input.form-control(type='text', name='dstreetZip', ng-model='d.streetZip')
+          hr
+          // Mailing Address
+          .form-group.row
+            .col-xs-12.col-md-12
+              label(for='d.mailingAddress') Mailing Address (If Different)
+              input.form-control(type='text', name='dmailingAddress', ng-model='d.mailingAddress')
+            .col-xs-12.col-md-6
+              label(for='d.mailingCity') City
+              input.form-control(type='text', name='dmailingCity', ng-model='d.mailingCity')
+            .col-xs-6.col-md-2
+              label(for='d.mailingState') State
+              input.form-control(type='text', name='dmailingState', ng-model='d.mailingState')
+            .col-xs-6.col-md-4
+              label(for='d.mailingZip') Zip
+              input.form-control(type='text', name='dmailingZip', ng-model='d.mailingZip')
+          hr
+          // checkboxes
+          .form-group.row
+            .col-xs-12.col-md-12
+              label(for='moreThanOneD') Check here if your case is against more than one defendant.
+              input(type='checkbox', name='moreThanOneD', ng-model='SC100Info.s2.moreThanOneD')
+          .form-group.row
+            .col-xs-12.col-md-6
+              label(for='activeMilitary') Check here if any defendant is on active duty.
+              input(type='checkbox', name='activeMilitary', ng-model='SC100Info.s2.activeMilitary')
+            .col-xs-12.col-md-6(ng-show='SC100Info.s2.activeMilitary')
+              label(for='activeMilitaryNames') Plese list their name here.
+              input(type='text', name='activeMilitaryNames', ng-model='SC100Info.s2.activeMilitaryNames')
+      // End defendant accordion-group div
+      // Begin dispute details accordion-group div
+      .panel-default(uib-accordion-group='', heading='Dispute Details')
+        .well
+          .form-group.row
+            .col-md-4
+              label(for='amount') How much does the plaintiff claim the defendant(s) owe?
+              input(type='number', name='amount', ng-model='sc100Deets.dispute.amountOwed')
+            .col-md-4
+              label(for='dateOccured') When did this happen?
+              br
+              input(type='date', name='dateOccured', ng-model='sc100Deets.dispute.exactDate')
+            .col-md-4
+              p Date Range
+              input(type='date', name='startDate', placeholder='Start Date', ng-model='sc100Deets.dispute.startDate')
+              input(type='date', name='endDate', placeholder='End Date', ng-model='sc100Deets.dispute.endDate')
+          .form-group.row
+            .col-md-12
+              label(for='disputeDetails') Dispute Details
+              br
+              textarea(name='disputeDetails1', ng-model='sc100Deets.dispute.details1', rows='1', cols='30')
+              textarea(name='disputeDetails2', ng-model='sc100Deets.dispute.details2', rows='1', cols='30')
+          .form-group.row
+            .col-md-12
+              label(for='howDetails') How did you calculate the money owed to you?
+              br
+              textarea(name='howDetails1', ng-model='sc100Deets.dispute.how', rows='1', cols='30')
+              textarea(name='howDetails2', ng-model='sc100Deets.dispute.how2', rows='1', cols='30')
+      // End dispute details accordion-group div
+      // Begin final details group
+      .panel-default(uib-accordion-group='', heading='Final Details')
+        fieldset
+          // Asked the defendant?
+          .form-group.row
+            .col-md-6
+              label(for='askedDefendant') Have you asked the defendant to pay you?
+              p
+                | Will be filled in from frontend app object, won't be at this point if they did not ask.
+              select(ng-model='SC100Info.s4.askedDefendant', name='askedDefendant')
+                option(value='Yes') Yes
+                option(value='No') No
+            .col-md-6(ng-show="SC100Info.s4.askedDefendant == 'No'")
+              label(for='defendantNotAsked') Why not?
+              input(type='text', name='defendantNotAsked1', ng-model='SC100Info.s4.defendantNotAsked1', col='3')
+              input(type='text', name='defendantNotAsked2', ng-model='SC100Info.s4.defendantNotAsked2', col='3')
+          // End asked the defendant?
+          // Begin courthouse question
+          .form-group.row
+            .col-md-6
+              label(for='courthouse') Why are you filing at this courthouse?
+              p Will be filled in from frontend app object
+              select(name='courthouse', ng-model='SC100Info.s4.courthouse')
+                option(value=' ')
+                option(value='a') A
+                option(value='b') B
+                option(value='c') C
+                option(value='d') D
+                option(value='other') Other
+            // End select
+            .col-md-12(ng-show="SC100Info.s4.courthouse == 'other'")
+              label(for='courthosueOther') Please specify
+              input(type='text', name='courthouseOther1', ng-model='SC100Info.s4.courthouseOther1')
+              input(type='text', name='courthouseOther2', ng-model='SC100Info.s4.courthouseOther2')
+            // End Other
+          // End courthouse question
+    button(type='submit') Submit
