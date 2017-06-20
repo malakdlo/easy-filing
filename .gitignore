@@ -5,3 +5,4 @@ npm-debug.log
 /public/pdfs/**
 !/public/pdfs/sc/sc100-fillable.pdf
 app.md
+public/pdfs/sc/.DS_Store
