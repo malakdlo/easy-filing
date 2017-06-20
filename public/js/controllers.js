@@ -262,6 +262,11 @@ angular.module('myApp.controllers', []).
       $scope.demandLetter = function(){
       }
       $scope.cantContinue = function(){};
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1f1eda3281adc011e074243802fbfab02c40641c
     // User Info
       $scope.user = {}
       */

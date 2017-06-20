@@ -125,7 +125,12 @@ router.post('/', (req, res) => {
     .toFile(filelocation)
     .then(() => {
       console.log("Success, PDF has been created at " + filelocation);
+<<<<<<< HEAD
       res.redirect('./pdfs/sc/' + filename);
+=======
+      res.redirect('pdfs/sc/' + filename);
+
+>>>>>>> 1f1eda3281adc011e074243802fbfab02c40641c
     })
     .catch((err) => {
         console.log(err);

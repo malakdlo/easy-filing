@@ -1,0 +1,286 @@
+<div ng-controller="FormController">
+      <form name="sc100Form" method="post" action="/fillpdf" novalidate="">
+        <uib-accordion close-others="oneAtATime">
+          <div uib-accordion-group="" heading="How to Use" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" class="panel-default">
+            <ol>
+              <li>Click on the section title to open the form fields.</li>
+              <li>Fill out all 4 sections.</li>
+              <li>Press submit to download your filled out Small Claims filing.</li>
+            </ol>
+          </div>
+          <div uib-accordion-group="" heading="Plaintiff " class="panel-default">
+            <fieldset>
+              <h1>Plaintiff</h1>
+              <!-- Type-->
+              <div class="form-group row">
+                <div class="col-xs-6">
+                  <label for="p.type">Type</label>
+                  <select ng-model="p.type" ng-options="x for x in scFormInfo.plaintiff.s2.type"></select>
+                </div>
+                <!-- End type of plaintiff col-->
+              </div>
+              <!-- First and Last-->
+              <div class="form-group row">
+                <div class="col-xs-6">
+                  <label for="p.firstName">First Name</label>
+                  <input type="text" name="pfirstName" ng-model="p.firstName" class="form-control"/>
+                </div>
+                <div class="col-xs-6">
+                  <label for="p.lastName">Last Name</label>
+                  <input type="text" name="plastName" ng-model="p.lastName" class="form-control"/>
+                </div>
+              </div>
+              <!-- Email and Phone-->
+              <div class="form-group row">
+                <div class="col-xs-6">
+                  <label for="p.email">Email</label>
+                  <input type="email" name="pemail" ng-model="p.email" class="form-control"/>
+                </div>
+                <div class="col-xs-6">
+                  <label for="p.phone">Phone</label>
+                  <input type="tel" name="pphone" ng-model="p.phone" class="form-control"/>
+                </div>
+              </div>
+              <hr/>
+              <!-- Street Address-->
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-12">
+                  <label for="p.streetAddress">Street Address</label>
+                  <input type="text" name="pstreetAddress" ng-model="p.streetAddress" class="form-control"/>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <label for="p.streetCity">City</label>
+                  <input type="text" name="pstreetCity" ng-model="p.streetCity" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                  <label for="p.streetState">State</label>
+                  <input type="text" name="pstreetState" ng-model="p.streetState" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                  <label for="p.streetZip">Zip</label>
+                  <input type="text" name="pstreetZip" ng-model="p.streetZip" class="form-control"/>
+                </div>
+              </div>
+              <hr/>
+              <!-- Mailing Address-->
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-12">
+                  <label for="p.mailingAddress">Mailing Address (If Different)</label>
+                  <input type="text" name="pmailingAddress" ng-model="p.mailingAddress" class="form-control"/>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <label for="p.mailingCity">City</label>
+                  <input type="text" name="pmailingCity" ng-model="p.mailingCity" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                  <label for="p.mailingState">State</label>
+                  <input type="text" name="pmailingState" ng-model="p.mailingState" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                  <label for="p.mailingZip">Zip</label>
+                  <input type="text" name="pmailingZip" ng-model="p.mailingZip" class="form-control"/>
+                </div>
+              </div>
+              <hr/>
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-12">
+                  <label for="moreThanTwoP">Check here if your case has more than two plaintiffs.</label>
+                  <input type="checkbox" name="moreThanTwoP" ng-model="SC100Info.s1.moreThanTwoP"/>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-12">
+                  <label for="isDba">Check here if any of the plaintiffs are doing business under a fictitious name.</label>
+                  <input type="checkbox" name="isDba" ng-model="SC100Info.s1.isDBA"/>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-12">
+                  <label for="payLender">Check here if any plaintiff is a "licensee" or "deferred deposit originator" under Financial Code sections 23000 et seq.</label>
+                  <input type="checkbox" name="payLender" ng-model="SC100Info.s1.payLender"/>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <!-- End plaintiff accordion-group div-->
+          <div uib-accordion-group="" heading="Defendant " class="panel-default">
+            <fieldset>
+              <!-- Military and Type-->
+              <div class="form-group row">
+                <div class="col-xs-6">
+                  <label for="d.active">Is the defendant on active military duty?</label>
+                  <select ng-model="d.military" ng-options="x for x in scFormInfo.defendant.s2.militaryDuty"></select>
+                </div>
+                <div class="col-xs-6">
+                  <label for="d.type">Type</label>
+                  <select ng-model="d.type" ng-options="x for x in scFormInfo.defendant.s2.type"></select>
+                </div>
+              </div>
+              <!-- First and Last-->
+              <div class="form-group row">
+                <div class="col-xs-6">
+                  <label for="d.firstName">First Name</label>
+                  <input type="text" name="dfirstName" ng-model="d.firstName" class="form-control"/>
+                </div>
+                <div class="col-xs-6">
+                  <label for="d.lastName">Last Name</label>
+                  <input type="text" name="dlastName" ng-model="d.lastName" class="form-control"/>
+                </div>
+              </div>
+              <!-- Email and Phone-->
+              <div class="form-group row">
+                <div class="col-xs-6">
+                  <label for="d.email">Email</label>
+                  <input type="email" name="demail" ng-model="d.email" class="form-control"/>
+                </div>
+                <div class="col-xs-6">
+                  <label for="d.phone">Phone</label>
+                  <input type="tel" name="dphone" ng-model="d.phone" class="form-control"/>
+                </div>
+              </div>
+              <hr/>
+              <!-- Street Address-->
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-12">
+                  <label for="d.streetAddress">Street Address</label>
+                  <input type="text" name="dstreetAddress" ng-model="d.streetAddress" class="form-control"/>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <label for="d.streetCity">City</label>
+                  <input type="text" name="dstreetCity" ng-model="d.streetCity" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                  <label for="d.streetState">State</label>
+                  <input type="text" name="dstreetState" ng-model="d.streetState" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                  <label for="d.streetZip">Zip</label>
+                  <input type="text" name="dstreetZip" ng-model="d.streetZip" class="form-control"/>
+                </div>
+              </div>
+              <hr/>
+              <!-- Mailing Address-->
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-12">
+                  <label for="d.mailingAddress">Mailing Address (If Different)</label>
+                  <input type="text" name="dmailingAddress" ng-model="d.mailingAddress" class="form-control"/>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                  <label for="d.mailingCity">City</label>
+                  <input type="text" name="dmailingCity" ng-model="d.mailingCity" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                  <label for="d.mailingState">State</label>
+                  <input type="text" name="dmailingState" ng-model="d.mailingState" class="form-control"/>
+                </div>
+                <div class="col-xs-6 col-md-4">
+                  <label for="d.mailingZip">Zip</label>
+                  <input type="text" name="dmailingZip" ng-model="d.mailingZip" class="form-control"/>
+                </div>
+              </div>
+              <hr/>
+              <!-- checkboxes-->
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-12">
+                  <label for="moreThanOneD">Check here if your case is against more than one defendant.</label>
+                  <input type="checkbox" name="moreThanOneD" ng-model="SC100Info.s2.moreThanOneD"/>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-xs-12 col-md-6">
+                  <label for="activeMilitary">Check here if any defendant is on active duty.</label>
+                  <input type="checkbox" name="activeMilitary" ng-model="SC100Info.s2.activeMilitary"/>
+                </div>
+                <div ng-show="SC100Info.s2.activeMilitary" class="col-xs-12 col-md-6">
+                  <label for="activeMilitaryNames">Plese list their name here.</label>
+                  <input type="text" name="activeMilitaryNames" ng-model="SC100Info.s2.activeMilitaryNames"/>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <!-- End defendant accordion-group div-->
+          <!-- Begin dispute details accordion-group div -->
+          <div uib-accordion-group="" heading="Dispute Details" class="panel-default">
+            <div class="well">
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="amount">How much does the plaintiff claim the defendant(s) owe?</label>
+                  <input type="number" name="amount" ng-model="sc100Deets.dispute.amountOwed"/>
+                </div>
+                <div class="col-md-4">
+                  <label for="dateOccured">When did this happen?</label><br/>
+                  <input type="date" name="dateOccured" ng-model="sc100Deets.dispute.exactDate"/>
+                </div>
+                <div class="col-md-4">
+                  <p>Date Range</p>
+                  <input type="date" name="startDate" placeholder="Start Date" ng-model="sc100Deets.dispute.startDate"/>
+                  <input type="date" name="endDate" placeholder="End Date" ng-model="sc100Deets.dispute.endDate"/>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="disputeDetails">Dispute Details</label><br/>
+                  <textarea name="disputeDetails1" ng-model="sc100Deets.dispute.details1" rows="1" cols="30"></textarea>
+                  <textarea name="disputeDetails2" ng-model="sc100Deets.dispute.details2" rows="1" cols="30"></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="howDetails">How did you calculate the money owed to you?</label><br/>
+                  <textarea name="howDetails1" ng-model="sc100Deets.dispute.how" rows="1" cols="30"></textarea>
+                  <textarea name="howDetails2" ng-model="sc100Deets.dispute.how2" rows="1" cols="30"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End dispute details accordion-group div -->
+          <!-- Begin final details group -->
+          <div uib-accordion-group="" heading="Final Details" class="panel-default">
+            <fieldset>
+              <!-- Asked the defendant? -->
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="askedDefendant">Have you asked the defendant to pay you?</label>
+                  <p>Will be filled in from frontend app object, won't be at this point if they did not ask.</p>
+                  <select ng-model="SC100Info.s4.askedDefendant" name="askedDefendant">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <div class="col-md-6" ng-show="SC100Info.s4.askedDefendant == 'No'">
+                  <label for="defendantNotAsked">Why not?</label>
+                  <input type="text" name="defendantNotAsked1" ng-model="SC100Info.s4.defendantNotAsked1" col="3"/>
+                  <input type="text" name="defendantNotAsked2" ng-model="SC100Info.s4.defendantNotAsked2" col="3"/>
+                </div>
+              </div>
+              <!--End asked the defendant?-->
+              <!--Begin courthouse question-->
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="courthouse">Why are you filing at this courthouse?</label>
+                  <p>Will be filled in from frontend app object</p>
+                  <select name="courthouse" ng-model="SC100Info.s4.courthouse">
+                    <option value=" "></option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <!--End select-->
+                <div class="col-md-12" ng-show="SC100Info.s4.courthouse == 'other'">
+                  <label for="courthosueOther">Please specify</label>
+                  <input type="text" name="courthouseOther1" ng-model="SC100Info.s4.courthouseOther1">
+                  <input type="text" name="courthouseOther2" ng-model="SC100Info.s4.courthouseOther2">
+                </div>
+                <!--End Other-->
+              </div>
+              <!--End courthouse question-->
+
+            </fieldset>
+          </div>
+        </uib-accordion>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
