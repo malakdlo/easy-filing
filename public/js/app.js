@@ -26,16 +26,12 @@ config(['$routeProvider','$locationProvider',function ($routeProvider, $location
       controller: 'ScBasicCtrl'
     }).
     when('/file', {
-<<<<<<< HEAD
       templateUrl: 'partials/sc100-jade',
-=======
-      templateUrl: 'partials/sc100-jade'
->>>>>>> 1f1eda3281adc011e074243802fbfab02c40641c
     }).
     otherwise({
       redirectTo: '/file'
     });
-
+    
   $locationProvider.html5Mode(true);
 }])
 

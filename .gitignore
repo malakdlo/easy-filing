@@ -4,8 +4,5 @@ npm-debug.log
 *.env
 /public/pdfs/**
 !/public/pdfs/sc/sc100-fillable.pdf
-<<<<<<< HEAD
 app.md
 public/pdfs/sc/.DS_Store
-=======
->>>>>>> 1f1eda3281adc011e074243802fbfab02c40641c
